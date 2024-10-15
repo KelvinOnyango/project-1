@@ -1,0 +1,254 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(90deg, rgb(78, 26, 199), rgb(22, 11, 174)); 
+ }
+
+.header{
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 1rem;
+}
+
+.header::before{
+    position: absolute;
+    content:"";
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.7);
+    backdrop-filter: blur(50px);
+    z-index: -1;
+}
+
+.header::after{
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 100%;
+    height: 0;
+    background:linear-gradient(90deg, transparent, rgba(42, 4, 77, 0.9), transparent);
+    transition: 0.3s ease-in-out;
+}
+
+.header:hover::after{
+    transform: translateX(100%);
+
+}
+.logo{
+    text-decoration: none;
+    font-size: 1rem;
+    color: aliceblue;
+
+}
+
+nav a{
+    text-decoration: none;
+    margin: 1.1rem;
+    color: aliceblue;
+    transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out; /* Transition color and border */
+    position:relative;
+
+
+}
+
+nav a:hover{
+    color: rgb(10, 173, 255);
+    border-bottom:1px solid #04e9c6;
+    
+}
+
+nav a:nth-child(1){
+    --i: 0;
+}
+
+nav a:nth-child(2){
+    --i: 1;
+}
+
+nav a:nth-child(3){
+    --i: 2;
+}
+
+nav a:nth-child(4){
+    --i: 3;
+}
+
+nav a:nth-child(5){
+    --i: 4;
+}
+
+.icons{
+    position: absolute;
+    right: 0;
+    font-size: 1.7rem;
+    color: aliceblue;
+    display: none;
+}
+
+
+
+#check{
+    display: none;
+}
+
+@media(max-width:783px){
+    .icons{
+        display: block;
+    }
+
+    .nav-bar{
+        position:absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background-color: rgb(0, 0, 0, 0.5);
+        backdrop-filter: blur(15px);
+        transition: 0.3s ease-in-out;
+        overflow: hidden;
+    
+    }
+
+    .nav-bar a{
+        display: block;
+        text-align: center;
+        transform: translateX(-50px);
+        transition: 0.5s ease-in-out;
+        opacity: 0;
+       
+    }
+    nav a:hover{
+        color: rgba(12, 134, 242, 0.68);
+        border-bottom:dashed #008cb3;
+
+        
+    }
+    
+
+    #close-icon{
+        display: none;
+    }
+    #menu-icon{
+        display: block;
+    }
+
+    #check:checked~.icons #menu-icon{
+        display: none;
+    }
+
+    #check:checked~.icons #close-icon{
+        display: block;
+        
+    }
+
+
+    #check:checked ~ .nav-bar{
+        height: auto;
+        padding: 0 1rem 0 0;
+
+        
+    }
+
+    #check:checked ~ .nav-bar a{
+        transform: translateX(0);
+        transition-delay: calc(.15s * var(--i));
+        opacity: 1;
+    }
+
+    #check:checked ~.hero-content {
+        margin-block-start: 8.5rem;
+    }
+
+
+}
+.hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('images/Artboard\ 1.svg') no-repeat center/cover;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('images/Artboard 1.svg') no-repeat center/cover;
+    background-attachment: fixed;
+    transition: 0.3s ease-in-out;
+    
+
+}
+.hero-content{
+    max-width: 20rem;
+    margin: 2rem;
+    margin-top: 6.5rem;
+    
+}
+
+.hero-title{
+    font-size: 4em;
+    margin-block-end:1rem;
+}
+
+.hero-subtitle{
+    font-size: 2em;
+    margin-block-end:2rem;
+}
+
+.hero-button{
+    background-color: #1e90ff;
+    color: white;
+    text-decoration: none;
+    padding: 1.2rem 1rem;
+    border-radius: 1rem;
+}
+
+
+.hero-button:hover {
+    background-color: #0056b3;
+}
+
+.hero-image-container {
+    max-width: 25%;
+    margin-right: 10rem;
+    margin-top: 8rem;
+}
+
+.hero-image {
+    width: 100%;
+    
+}
+/* Ensure responsiveness */
+@media (max-width: 783px) {
+    .hero {
+        /* flex-direction: column; */
+        text-align: center;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), url('images/minimalist.svg') no-repeat center/cover;
+        
+    }
+    
+.hero-image-container {
+   display:none;
+}
+
+    .hero-content {
+        margin-bottom: 2rem;
+        /* margin-block-start: 8.5rem; */
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-image-container {
+        max-width: 25%;
+    }
+}
